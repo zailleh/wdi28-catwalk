@@ -169,8 +169,21 @@ const walkToMouse = function () {
   if ( currentPos.x > targetPos.x ) {
     img.className = 'moveleft';
     if (img.getAttribute('src') !== DEFAULTIMAGE) {img.src = DEFAULTIMAGE; ms=0}
-  } else if ( (currentPos.x === targetPos.x || currentPos.x + img.width) && currentPos.y === targetPos.y ) {
-    if (img.getAttribute('src') !== DANCINGCAT) {img.src = DANCINGCAT; ms=msLimit+1;}
+  } else if ( (currentPos.x === targetPos.x ||
+      ( currentPos.x + img.width >= targetPos.x && currentPos.x + img.width <= targetPos.x ) ) && currentPos.y === targetPos.y ) {
+        //console.log('woot');
+    if (img.getAttribute('src') !== DANCINGCAT) {
+      if (currentPos.x + img.width === targetPos.x) {
+        let curLeft = img.offsetLeft;
+        let curWidth = img.width;
+
+        img.src = DANCINGCAT; ms=msLimit+1;
+        let newLeft = curLeft + ( curWidth - img.width );
+        img.style.left = newLeft + 'px';
+      } else {
+        img.src = DANCINGCAT; ms=msLimit+1;
+      }
+    }
     return;
   } else {
     img.className = 'moveright';
