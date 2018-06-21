@@ -171,7 +171,11 @@ const walkToMouse = function () {
     if (img.getAttribute('src') !== DEFAULTIMAGE) {img.src = DEFAULTIMAGE; ms=0}
   } else if ( (currentPos.x === targetPos.x ||
       ( currentPos.x + img.width >= targetPos.x && currentPos.x + img.width <= targetPos.x ) ) && currentPos.y === targetPos.y ) {
+<<<<<<< HEAD
         //console.log('woot');
+=======
+        console.log('woot');
+>>>>>>> ff3f12ee1a404fb1bc0acd1ae9fa8e90ffbe9e16
     if (img.getAttribute('src') !== DANCINGCAT) {
       if (currentPos.x + img.width === targetPos.x) {
         let curLeft = img.offsetLeft;
